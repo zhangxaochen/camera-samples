@@ -33,10 +33,7 @@ import android.media.MediaCodec
 import android.media.MediaCodecInfo
 import android.media.MediaFormat
 import android.media.MediaScannerConnection
-import android.os.Bundle
-import android.os.ConditionVariable
-import android.os.Handler
-import android.os.HandlerThread
+import android.os.*
 import android.util.Log
 import android.util.Range
 import android.view.LayoutInflater
@@ -74,6 +71,7 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 import com.example.android.camera2.video.EncoderWrapper
+import logi
 
 class SurfaceViewFragment : Fragment() {
 
@@ -489,6 +487,18 @@ class SurfaceViewFragment : Fragment() {
         /** Creates a [File] named with the current date and time */
         private fun createFile(context: Context, extension: String): File {
             val sdf = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS", Locale.US)
+
+            // create a File object for the parent directory
+            val newFolder = File("/sdcard/DCIM/cam2video")
+            // have the object build the directory structure, if needed.
+            val newfolderExists = newFolder.exists();
+            logi("zzzzz newfolderExists=${newfolderExists}")
+            val mkdirSucceeded = newFolder.mkdirs();
+//            val mkdirSucceeded = newFolder.mkdir();
+            logi("zzzzz mkdirSucceeded=${mkdirSucceeded}")
+            logi("zzzzz Environment.getExternalStorageDirectory=${Environment.getExternalStorageDirectory()}")
+
+            return File(newFolder, "VID_${sdf.format(Date())}.$extension")
             return File(context.filesDir, "VID_${sdf.format(Date())}.$extension")
         }
     }

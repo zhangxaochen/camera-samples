@@ -16,9 +16,11 @@
 
 package com.example.android.camera2.video
 
+import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.example.android.camera2.video.databinding.ActivityCameraBinding
 
 class CameraActivity : AppCompatActivity() {
@@ -29,6 +31,9 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityCameraBinding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(activityCameraBinding.root)
+
+//        ActivityCompat.requestPermissions(this,
+//            arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),1);
     }
 
     override fun onResume() {

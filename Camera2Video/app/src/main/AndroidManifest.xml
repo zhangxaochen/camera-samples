@@ -21,6 +21,7 @@
     <!-- Permission declarations -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- A camera with burst capability is required to use this application -->
     <uses-feature android:name="android.hardware.camera.any" />
@@ -36,7 +37,7 @@
             android:name="com.example.android.camera2.video.CameraActivity"
             android:clearTaskOnLaunch="true"
             android:theme="@style/AppTheme"
-            android:exported="false">
+            android:exported="true">
 
             <!-- Main app intent filter -->
             <intent-filter>
